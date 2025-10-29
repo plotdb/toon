@@ -226,7 +226,7 @@ MIT License
 
 ## Author
 
-Developed with Claude Code
+Developed with Claude Code by zbryikt
 
 ---
 
