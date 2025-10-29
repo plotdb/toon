@@ -13,12 +13,12 @@ A complete implementation of TOON (Token-Oriented Object Notation) encoder and d
 - Follows official TOON specification
 
 
-## Quick start
-
-### Installation
+## Installation
 
     npm install --save @plotdb/toon
 
+
+## Usage
 
 ### Basic usage
 
@@ -51,29 +51,7 @@ A complete implementation of TOON (Token-Oriented Object Notation) encoder and d
     console.log(JSON.stringify(decoded) === JSON.stringify(data)); // true
 
 
-## Testing
-
-    # Run all tests
-    npm test
-
-    # Run individual tests
-    npm run test:encoder    # Encoder tests
-    npm run test:decoder    # Decoder and round-trip tests
-    npm run test:samples    # Sample files tests
-
-    # Run example
-    npm run example
-
-### Test results
-
-- Encoder: 11/11 passed
-- Decoder: 11/11 passed
-- Round-trip: 11/11 passed
-- Samples: 7/7 passed
-
-Total: 100% success rate
-
-## API documentation
+## API
 
 ### encode(value, options)
 
@@ -88,6 +66,11 @@ Parameters:
 
 Returns: TOON format string
 
+Example:
+
+    const toon = encode({ name: "Ada", age: 30 });
+
+
 ### decode(toonStr, options)
 
 Parse a TOON format string to JSON value.
@@ -99,17 +82,23 @@ Parameters:
 
 Returns: Parsed JSON value
 
-### Classes
+Example:
 
-    const { encoder, decoder } = require('./dist/index.js');
+    const data = decode("name: Ada\nage: 30");
 
-    // Use encoder instance
+
+### Using encoder/decoder classes
+
+    const { encoder, decoder } = require('@plotdb/toon');
+
+    // Use encoder instance with custom options
     const enc = new encoder({ delimiter: '\t' });
     const toon = enc.encode(data);
 
     // Use decoder instance
     const dec = new decoder();
     const json = dec.decode(toon);
+
 
 ## TOON format examples
 
@@ -119,15 +108,18 @@ Returns: Parsed JSON value
     name: Ada
     active: true
 
+
 ### Nested object
 
     user:
       id: 123
       name: Ada
 
+
 ### Inline array
 
     tags[3]: admin,ops,dev
+
 
 ### Tabular array
 
@@ -135,6 +127,7 @@ Returns: Parsed JSON value
       A1,2,9.99
       B2,1,14.5
       C3,5,7.25
+
 
 ### List array
 
@@ -145,56 +138,23 @@ Returns: Parsed JSON value
       - true
       - null
 
+
 ### Quoted strings
 
     with_comma: "hello, world"
     with_colon: "key: value"
     looks_like_bool: "true"
 
-## Project structure
 
-    /workspace
-    ├── src/
-    │   └── index.ls              # Main implementation (~700 lines)
-    ├── dist/
-    │   ├── index.js              # Compiled JavaScript
-    │   └── index.min.js          # Minified version
-    ├── tests/                    # Test files
-    │   ├── test-encoder.js       # Encoder tests
-    │   ├── test-decoder.js       # Decoder tests
-    │   ├── test-samples.js       # Sample tests
-    │   └── example.js            # Usage example
-    ├── samples/                  # Test samples
-    │   ├── simple/               # Simple cases
-    │   ├── complex/              # Complex cases
-    │   └── edge-cases/           # Edge cases
-    ├── llm/                      # AI-generated docs and references
-    │   ├── spec.md               # TOON format specification
-    │   ├── lsc-coding-guide.md   # LiveScript coding style
-    │   ├── DEV.md                # Development guide
-    │   ├── ARCHITECTURE.md       # Architecture document
-    │   ├── FINAL_REPORT.md       # Complete report
-    │   └── SAMPLES_PLANNING.md   # Test case planning
-    ├── package.json              # Project configuration
-    ├── build                     # Build script
-    └── README.md                 # This file
+## Benefits
 
-## Documentation
-
-- [llm/spec.md](llm/spec.md) - TOON format specification
-- [llm/DEV.md](llm/DEV.md) - Development guide
-- [llm/ARCHITECTURE.md](llm/ARCHITECTURE.md) - Architecture document
-- [llm/FINAL_REPORT.md](llm/FINAL_REPORT.md) - Complete implementation report
-- [llm/lsc-coding-guide.md](llm/lsc-coding-guide.md) - LiveScript coding style guide
-- [llm/SAMPLES_PLANNING.md](llm/SAMPLES_PLANNING.md) - Test case planning
-
-## Token savings
+### Token savings
 
 According to TOON specification, compared to JSON:
 - General data: 30-60% token reduction
 - Tabular data: up to 60%+ token reduction
 
-## Use cases
+### Use cases
 
 Suitable for:
 - Passing data to LLMs
@@ -206,7 +166,63 @@ Not suitable for:
 - Database storage (use JSON)
 - Direct browser parsing (use JSON)
 
-## Technical specifications
+
+## Development
+
+### Build
+
+    ./build
+
+### Testing
+
+    # Run all tests
+    npm test
+
+    # Run individual tests
+    npm run test:encoder    # Encoder tests
+    npm run test:decoder    # Decoder and round-trip tests
+    npm run test:samples    # Sample files tests
+
+    # Run example
+    npm run example
+
+Test results: All tests passed (100% success rate)
+
+
+### Project structure
+
+    .
+    ├── src/
+    │   └── index.ls              # Main implementation (~700 lines)
+    ├── dist/
+    │   ├── index.js              # Compiled JavaScript
+    │   └── index.min.js          # Minified version
+    ├── tests/                    # Test files
+    │   ├── test-encoder.js
+    │   ├── test-decoder.js
+    │   ├── test-samples.js
+    │   └── example.js
+    ├── samples/                  # Test samples
+    │   ├── simple/
+    │   ├── complex/
+    │   └── edge-cases/
+    └── llm/                      # Development documentation
+        ├── spec.md
+        ├── DEV.md
+        ├── ARCHITECTURE.md
+        └── ...
+
+
+### Documentation
+
+Development documentation:
+- [llm/spec.md](llm/spec.md) - TOON format specification
+- [llm/DEV.md](llm/DEV.md) - Development guide
+- [llm/ARCHITECTURE.md](llm/ARCHITECTURE.md) - Architecture document
+- [llm/FINAL_REPORT.md](llm/FINAL_REPORT.md) - Complete implementation report
+
+
+### Technical specifications
 
 - Language: LiveScript
 - Target: Node.js
@@ -214,21 +230,25 @@ Not suitable for:
 - Lines of code: ~700 lines
 - Test coverage: 100%
 
+
 ## Related links
 
 - [Official TOON specification](https://github.com/byjohann/toon)
 - [LiveScript official website](https://livescript.net/)
 
+
 ## License
 
 MIT License
+
 
 ## Author
 
 Developed with Claude Code by zbryikt
 
+
 ---
 
 Status: Complete and ready to use
-Version: 1.0.0
+Version: 0.0.1
 Last updated: 2025-10-29
