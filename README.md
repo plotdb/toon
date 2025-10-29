@@ -233,7 +233,7 @@ Development documentation:
 
 ## Related links
 
-- [Official TOON specification](https://github.com/byjohann/toon)
+- [Official TOON specification](https://github.com/johannschopplich/toon)
 - [LiveScript official website](https://livescript.net/)
 
 
