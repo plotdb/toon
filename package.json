@@ -5,7 +5,11 @@
   "main": "dist/index.min.js",
   "files": "dist/**/*",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/test-encoder.js && node tests/test-decoder.js && node tests/test-samples.js",
+    "test:encoder": "node tests/test-encoder.js",
+    "test:decoder": "node tests/test-decoder.js",
+    "test:samples": "node tests/test-samples.js",
+    "example": "node tests/example.js"
   },
   "keywords": [],
   "author": "zbryikt",

@@ -53,17 +53,16 @@ A complete implementation of TOON (Token-Oriented Object Notation) encoder and d
 
 ## Testing
 
-    # Encoder tests
-    node tests/test-encoder.js
+    # Run all tests
+    npm test
 
-    # Decoder and round-trip tests
-    node tests/test-decoder.js
+    # Run individual tests
+    npm run test:encoder    # Encoder tests
+    npm run test:decoder    # Decoder and round-trip tests
+    npm run test:samples    # Sample files tests
 
-    # Sample files tests
-    node tests/test-samples.js
-
-    # Full example
-    node tests/example.js
+    # Run example
+    npm run example
 
 ### Test results
 
