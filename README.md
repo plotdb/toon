@@ -1,6 +1,7 @@
-# TOON LiveScript Implementation
+# @plotdb/toon
 
 A complete implementation of TOON (Token-Oriented Object Notation) encoder and decoder in LiveScript.
+
 
 ## Features
 
@@ -11,19 +12,17 @@ A complete implementation of TOON (Token-Oriented Object Notation) encoder and d
 - Full quoting rules implementation
 - Follows official TOON specification
 
+
 ## Quick start
 
 ### Installation
 
-    npm install
+    npm install --save @plotdb/toon
 
-### Build
-
-    ./build
 
 ### Basic usage
 
-    const { encode, decode } = require('./dist/index.js');
+    const { encode, decode } = require('@plotdb/toon');
 
     // Encode JSON to TOON
     const data = {
@@ -50,6 +49,7 @@ A complete implementation of TOON (Token-Oriented Object Notation) encoder and d
     // Decode TOON to JSON
     const decoded = decode(toon);
     console.log(JSON.stringify(decoded) === JSON.stringify(data)); // true
+
 
 ## Testing
 
