@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.min.js",
-  "files": "dist/**/*",
+  "files": ["dist/**/*"],
   "scripts": {
     "test": "node tests/test-encoder.js && node tests/test-decoder.js && node tests/test-samples.js",
     "test:encoder": "node tests/test-encoder.js",
